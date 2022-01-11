@@ -1,3 +1,7 @@
-* {
-  border-radius: 0px !important;
-}
+.person-application-details .document-container {
+    min-height: calc(100vh - 100px); !important;
+  }
+  
+  #document-modal-body {
+      min-height: calc(100vh - 100px); !important 
+  }

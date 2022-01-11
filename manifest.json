@@ -1,12 +1,36 @@
 {
-  "name": "edgyhub",
+  "name": "Greenhouse Jetpack",
   "version": "1.0",
   "manifest_version": 2,
-  "description": "i hate rounded edges",
+  "description": "Avoid clicking multiple buttons in greenhouse.",
+  "permissions": [
+    "tabs",
+    "bookmarks",
+    "storage"
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
   "content_scripts": [
     {
-      "matches": ["*://github.com/*"],
-      "css": ["main.css"]
+      "matches": [
+        "*://app.greenhouse.io/*"
+      ],
+      "css": [
+        "main.css"
+      ],
+      "js": [
+        "main.js"
+      ]
     }
-  ]
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "options_page": "options.html"
 }
