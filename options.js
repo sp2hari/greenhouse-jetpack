@@ -14,9 +14,9 @@ function save_options() {
   var enableAutoMove = document.getElementById('automove').checked;
   var enableSlowInternet = document.getElementById('slowinternet').checked;
 
-  chrome.runtime.sendMessage({storage: 'voice', value: enableVoice});
-  chrome.runtime.sendMessage({storage: 'automove', value: enableAutoMove});
-  chrome.runtime.sendMessage({storage: 'slowinternet', value: enableSlowInternet});
+  chrome.runtime.sendMessage({storage: 'voice-komal', value: enableVoice});
+  chrome.runtime.sendMessage({storage: 'automove-komal', value: enableAutoMove});
+  chrome.runtime.sendMessage({storage: 'slowinternet-komal', value: enableSlowInternet});
 
 }
 
