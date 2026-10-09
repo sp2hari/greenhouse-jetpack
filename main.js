@@ -13,11 +13,41 @@ function toBool(str) {
   }
 }
 
+// The redesigned application page is a React app, so the resume button
+// renders after load. Wait for it, click it once, then stop watching.
+function clickResumeWhenReady() {
+  const selector = 'button[data-provides="header-view-resume"]';
+  const tryClick = () => {
+    const button = document.querySelector(selector);
+    if (button) {
+      button.click();
+      return true;
+    }
+    return false;
+  };
+
+  if (tryClick()) {
+    return;
+  }
+
+  const observer = new MutationObserver(() => {
+    if (tryClick()) {
+      observer.disconnect();
+    }
+  });
+  observer.observe(document.body, {childList: true, subtree: true});
+  setTimeout(() => observer.disconnect(), 15000);
+}
+
 window.onload = function()
 {
 
   if(document.getElementById('preview_resume_button')) {
     document.getElementById('preview_resume_button').click();
+  }
+
+  if (/\/applications\/\d+\/redesign/.test(location.pathname)) {
+    clickResumeWhenReady();
   }
 
   recognition.addEventListener('end', recognition.start);
